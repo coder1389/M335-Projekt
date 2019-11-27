@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemService } from 'src/app/core/item.service';
+import { UtilService } from 'src/app/core/util.service';
+import { Item } from 'src/app/shared/model/item';
 
 @Component({
   selector: 'app-overview',
@@ -6,10 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./overview.page.scss'],
 })
 export class OverviewPage implements OnInit {
+  items: Item[] = [];
 
-  constructor() { }
+  constructor(private $itemService: ItemService, private $utilService: UtilService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.items = this.$itemService.getItems();
   }
-
 }

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { OverviewPage } from './overview/overview.page';
 import { TabsPage } from './tabs.page';
+import { UserPage } from './user/user.page';
 
 const routes: Routes = [
   {
@@ -9,23 +11,11 @@ const routes: Routes = [
     children: [
       {
         path: 'overview',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('./overview/overview.module').then(m => m.OverviewPageModule)
-          }
-        ]
+        component: OverviewPage
       },
       {
         path: 'user',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('./user/user.module').then(m => m.UserPageModule)
-          }
-        ]
+        component: UserPage
       },
       {
         path: '',
@@ -39,14 +29,6 @@ const routes: Routes = [
     redirectTo: '/tabs/overview',
     pathMatch: 'full'
   },
-  {
-    path: 'overview',
-    loadChildren: () => import('./overview/overview.module').then(m => m.OverviewPageModule)
-  },
-  {
-    path: 'user',
-    loadChildren: () => import('./user/user.module').then(m => m.UserPageModule)
-  }
 ];
 
 @NgModule({

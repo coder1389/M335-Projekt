@@ -1,12 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { OverviewPageRoutingModule } from './overview-routing.module';
-
 import { OverviewPage } from './overview.page';
+
 
 @NgModule({
   imports: [
@@ -17,4 +15,4 @@ import { OverviewPage } from './overview.page';
   ],
   declarations: [OverviewPage]
 })
-export class OverviewPageModule {}
+export class OverviewPageModule { }

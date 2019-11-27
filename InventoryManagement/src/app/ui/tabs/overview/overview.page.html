@@ -1,9 +1,18 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Overview</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Übersicht</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <ion-list padding *ngFor="let item of items">
+        <ion-item>
+            <div class="value">
+                {{item.Name}} | {{item.Count}}
+            </div>
+            <div class="value">
+                <ion-icon name="trash"></ion-icon>
+            </div>
+        </ion-item>
+    </ion-list>
 </ion-content>

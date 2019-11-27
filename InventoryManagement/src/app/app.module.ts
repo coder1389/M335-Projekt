@@ -10,9 +10,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-
-
+import { TabsPageModule } from './ui/tabs/tabs.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +21,8 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    TabsPageModule
   ],
   providers: [
     StatusBar,
