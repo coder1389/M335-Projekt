@@ -14,7 +14,12 @@
         <ion-input type="number" [(ngModel)]="item.Count"></ion-input>
     </ion-row>
     <ion-row>
-        <ion-button (click)="makeFoto()">Foto hochladen</ion-button>
+        <ion-fab-button (click)="makeFoto()">
+            <ion-icon ios="ios-camera"></ion-icon>
+        </ion-fab-button>
+    </ion-row>
+    <ion-row *ngIf="!item.Image == ''">
+        <img src="item.Image">
     </ion-row>
 </ion-content>
 <ion-footer>

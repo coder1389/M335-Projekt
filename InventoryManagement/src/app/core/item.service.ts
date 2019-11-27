@@ -14,7 +14,7 @@ export class ItemService {
     this.$db.collection<Item>('items').snapshotChanges().subscribe(serverItems => {
       serverItems.forEach(a => {
         let item: any = a.payload.doc.data();
-        item.id = a.payload.doc.id;
+        item.Id = a.payload.doc.id;
         items.push(item)
       })
     })
@@ -35,6 +35,7 @@ export class ItemService {
   }
 
   delete(item: Item) {
+    console.log(item)
     this.$db.doc(`items/${item.Id}`).delete();
   }
 }

@@ -15,12 +15,19 @@ export class CreateEditPage implements OnInit {
 
   constructor(private $camera: Camera, private $itemService: ItemService, private $router: Router) { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   makeFoto() {
-    this.$camera.getPicture();
+    this.$camera.getPicture(
+      {
+        quality: 35,
+        destinationType: this.$camera.DestinationType.DATA_URL,
+        encodingType: this.$camera.EncodingType.JPEG,
+        mediaType: this.$camera.MediaType.PICTURE
+      }
+    ).then((imageData) => {
+      this.item.Image = 'data:image/jpeg:base64,' + imageData;
+    });
   }
 
   save() {

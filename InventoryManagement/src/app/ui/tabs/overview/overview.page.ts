@@ -16,4 +16,10 @@ export class OverviewPage implements OnInit {
   async ngOnInit() {
     this.items = this.$itemService.Items;
   }
+
+  delete(item: Item) {
+    this.$itemService.delete(item);
+    this.items = this.$itemService.Items;
+    // Location.reload();
+  }
 }

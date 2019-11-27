@@ -4,17 +4,25 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="items.length > 0">
     <ion-list padding *ngFor="let item of items">
         <ion-item class="item">
             <div class="value">
                 {{item.Name}} | {{item.Count}}
             </div>
             <div class="action">
-                <ion-icon name="trash" class="icon"></ion-icon>
+                <ion-icon name="trash" class="icon" (click)="delete(item)"></ion-icon>
             </div>
         </ion-item>
     </ion-list>
+</ion-content>
+<ion-content *ngIf="items.length == 0" class="no-data" center>
+    <ion-grid>
+        <ion-row center text-center>
+            <ion-icon name="ios-information-circle"></ion-icon>
+            <p>Kein Inventar erfasst</p>
+        </ion-row>
+    </ion-grid>
 </ion-content>
 <ion-footer>
     <ion-icon name="add" class="icon" [routerLink]="'../../create-edit'"></ion-icon>
