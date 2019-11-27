@@ -1,0 +1,3 @@
+<edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
+    <string>Used to take pictures</string>
+</edit-config>

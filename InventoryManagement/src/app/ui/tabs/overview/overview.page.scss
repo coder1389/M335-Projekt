@@ -1,0 +1,16 @@
+.item {
+    display: flex;
+    .value {
+        flex: 1;
+    }
+}
+
+.icon {
+    height: 24px;
+    width: 24px;
+    color: var(--ion-color-primary);
+}
+
+ion-footer {
+    padding: 10px;
+}

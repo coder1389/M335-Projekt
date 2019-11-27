@@ -8,7 +8,7 @@ import { Item } from '../shared/model/item';
 export class ItemService {
   constructor(private $db: AngularFirestore) { }
 
-  getItems() {
+  get Items() {
     let items = [];
 
     this.$db.collection<Item>('items').snapshotChanges().subscribe(serverItems => {
@@ -23,7 +23,11 @@ export class ItemService {
   }
 
   add(item: Item) {
-    this.$db.collection('items').add(item);
+    this.$db.collection('items').add({
+      Name: item.Name,
+      Count: item.Count,
+      Image: item.Image
+    });
   }
 
   update(item: Item) {

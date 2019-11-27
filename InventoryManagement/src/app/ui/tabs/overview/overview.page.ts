@@ -14,6 +14,6 @@ export class OverviewPage implements OnInit {
   constructor(private $itemService: ItemService, private $utilService: UtilService) { }
 
   async ngOnInit() {
-    this.items = this.$itemService.getItems();
+    this.items = this.$itemService.Items;
   }
 }

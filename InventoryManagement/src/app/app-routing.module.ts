@@ -13,7 +13,11 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./ui/tabs/tabs.module').then(m => m.TabsPageModule)
+  },  {
+    path: 'create-edit',
+    loadChildren: () => import('./ui/create-edit/create-edit.module').then( m => m.CreateEditPageModule)
   }
+
 ];
 @NgModule({
   imports: [

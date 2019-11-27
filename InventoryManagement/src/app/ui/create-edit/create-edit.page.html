@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Erfassen</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row>
+        <ion-label>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="item.Name"></ion-input>
+    </ion-row>
+    <ion-row>
+        <ion-label>Anzahl</ion-label>
+        <ion-input type="number" [(ngModel)]="item.Count"></ion-input>
+    </ion-row>
+    <ion-row>
+        <ion-button (click)="makeFoto()">Foto hochladen</ion-button>
+    </ion-row>
+</ion-content>
+<ion-footer>
+    <ion-button fill="clear" (click)="save()">
+        Speichern
+    </ion-button>
+</ion-footer>

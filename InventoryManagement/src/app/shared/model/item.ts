@@ -1,6 +1,7 @@
 
 export class Item {
   Id: string;
-  Name: string;
-  Count: number;
+  Name: string = '';
+  Count: number = 0;
+  Image: string = '';
 }

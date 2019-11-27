@@ -6,13 +6,16 @@
 
 <ion-content>
     <ion-list padding *ngFor="let item of items">
-        <ion-item>
+        <ion-item class="item">
             <div class="value">
                 {{item.Name}} | {{item.Count}}
             </div>
-            <div class="value">
-                <ion-icon name="trash"></ion-icon>
+            <div class="action">
+                <ion-icon name="trash" class="icon"></ion-icon>
             </div>
         </ion-item>
     </ion-list>
 </ion-content>
+<ion-footer>
+    <ion-icon name="add" class="icon" [routerLink]="'../../create-edit'"></ion-icon>
+</ion-footer>
