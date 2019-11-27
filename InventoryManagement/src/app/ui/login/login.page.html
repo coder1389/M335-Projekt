@@ -1,9 +1,22 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Login</ion-title>
+    </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+    <ion-grid>
+        <ion-row>
+            <ion-label>Mail</ion-label>
+        </ion-row>
+        <ion-row>
+            <ion-input [(ngModel)]="mail"></ion-input>
+        </ion-row>
+        <ion-row>
+            <ion-label>Password</ion-label>
+        </ion-row>
+        <ion-row>
+            <ion-input type="password" [(ngModel)]="password"></ion-input>
+        </ion-row>
+        <ion-button expand="full" fill="clear" (click)="tryLogin()">Anmelden</ion-button>
+    </ion-grid>
 </ion-content>
