@@ -20,6 +20,5 @@ export class OverviewPage implements OnInit {
   delete(item: Item) {
     this.$itemService.delete(item);
     this.items = this.$itemService.Items;
-    // Location.reload();
   }
 }

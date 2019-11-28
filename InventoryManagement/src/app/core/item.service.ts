@@ -9,16 +9,15 @@ export class ItemService {
   constructor(private $db: AngularFirestore) { }
 
   get Items() {
-    let items = [];
+    const items: Item[] = [];
 
     this.$db.collection<Item>('items').snapshotChanges().subscribe(serverItems => {
       serverItems.forEach(a => {
-        let item: any = a.payload.doc.data();
+        const item: any = a.payload.doc.data();
         item.Id = a.payload.doc.id;
-        items.push(item)
-      })
-    })
-
+        items.push(item);
+      });
+    });
     return items;
   }
 
@@ -35,7 +34,6 @@ export class ItemService {
   }
 
   delete(item: Item) {
-    console.log(item)
     this.$db.doc(`items/${item.Id}`).delete();
   }
 }

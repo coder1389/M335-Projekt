@@ -13,7 +13,7 @@ export class UtilService {
   }
 
   set Credentials(value: any) {
-    console.log(value)
+    console.log(value);
     if (value != null) {
       localStorage.setItem(LocalStorageKeys.UserCredential, JSON.stringify(value));
     }
