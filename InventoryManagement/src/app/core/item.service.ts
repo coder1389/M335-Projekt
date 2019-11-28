@@ -1,12 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Sanitizer } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Item } from '../shared/model/item';
 
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * @Author Danijel Malinovic
+ */
 export class ItemService {
-  constructor(private $db: AngularFirestore) { }
+  constructor(private $db: AngularFirestore, private $sanitize: Sanitizer) { }
 
   get Items() {
     const items: Item[] = [];
@@ -16,6 +19,8 @@ export class ItemService {
         const item: any = a.payload.doc.data();
         item.Id = a.payload.doc.id;
         items.push(item);
+
+        item.Image = this.$sanitize.sanitize(null, item.Image);
       });
     });
     return items;

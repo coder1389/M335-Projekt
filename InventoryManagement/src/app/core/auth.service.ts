@@ -11,6 +11,8 @@ export class AuthService {
   constructor(private $afAuth: AngularFireAuth, private $utilService: UtilService) { }
 
   public async login(mail: string, password: string) {
-    await this.$afAuth.auth.signInWithEmailAndPassword(mail, password).then(x => this.$utilService.Credentials = x).catch(x => { throw x });
+    await this.$afAuth.auth.signInWithEmailAndPassword(mail, password)
+    .then(x => this.$utilService.Credentials = x)
+    .catch(x => { throw x });
   }
 }

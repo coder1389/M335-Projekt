@@ -15,7 +15,7 @@
     </ion-row>
     <ion-row>
         <ion-fab-button (click)="makeFoto()">
-            <ion-icon ios="ios-camera"></ion-icon>
+            <ion-icon name="ios-camera"></ion-icon>
         </ion-fab-button>
     </ion-row>
     <ion-row *ngIf="!item.Image == ''">
@@ -25,5 +25,8 @@
 <ion-footer>
     <ion-button fill="clear" (click)="save()">
         Speichern
+    </ion-button>
+    <ion-button fill="clear" [routerLink]="'../tabs'">
+        Abbrechen
     </ion-button>
 </ion-footer>
