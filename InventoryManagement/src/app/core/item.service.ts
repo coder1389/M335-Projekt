@@ -20,7 +20,9 @@ export class ItemService {
         item.Id = a.payload.doc.id;
         items.push(item);
 
-        item.Image = this.$sanitize.sanitize(null, item.Image);
+        if (item.Image !== '') {
+          item.Image = this.$sanitize.sanitize(null, item.Image);
+        }
       });
     });
     return items;

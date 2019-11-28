@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseAuth } from '@angular/fire';
 import { UserService } from 'src/app/core/user.service';
+import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
   selector: 'app-user',
@@ -9,13 +9,12 @@ import { UserService } from 'src/app/core/user.service';
 })
 export class UserPage implements OnInit {
 
-  user: any;
+  user: any = {};
 
-  constructor(private $userService: UserService) { }
+  constructor(private $userService: UserService, private $authService: AuthService) { }
 
   async ngOnInit() {
-    // this.user = await this.$userService.getUser();
-    console.log(this.user);
+    await this.$authService.login('danijelmalinovic2@gmail.com', '10Danijel');
+    this.user = await this.$userService.getUser();
   }
-
 }

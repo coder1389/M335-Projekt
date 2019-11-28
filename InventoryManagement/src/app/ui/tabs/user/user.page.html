@@ -1,9 +1,26 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>user</ion-title>
+    <ion-title>Benutzer</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-item>
+        Mail:
+        {{user.email}}
+      </ion-item>
+    </ion-row>
+    <ion-row>
+        <ion-item>
+          Name:
+          {{user.displayName}}
+        </ion-item>
+      </ion-row>
+  </ion-grid>
+</ion-content>
 
+<ion-content>
+  <pre>{{user | json}}</pre>
 </ion-content>
