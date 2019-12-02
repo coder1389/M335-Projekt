@@ -21,12 +21,11 @@ export class CreateEditPage implements OnInit, OnDestroy {
   private itemSubscription: Subscription;
 
   private readonly cameraConfiguration: CameraOptions = {
-        quality: 35,
-        destinationType: this.$camera.DestinationType.FILE_URI,
+        quality: 100,
+        sourceType: this.$camera.PictureSourceType.CAMERA,
+        destinationType: this.$camera.DestinationType.DATA_URL,
         encodingType: this.$camera.EncodingType.JPEG,
-        mediaType: this.$camera.MediaType.PICTURE,
-        allowEdit: true,
-        saveToPhotoAlbum: true
+        mediaType: this.$camera.MediaType.PICTURE
   };
 
   constructor(
@@ -62,8 +61,8 @@ export class CreateEditPage implements OnInit, OnDestroy {
     async makeFoto() {
     try {
       this.$camera.getPicture(this.cameraConfiguration).then((imageData) => {
-        this.item.Image = imageData;
-        this.$alertService.alert(imageData);
+        this.item.Image = 'data:image/jpeg;base64,' + imageData;
+        this.image = this.item.Image;
       });
     } catch (e) {
       this.$alertService.alert(e.message);

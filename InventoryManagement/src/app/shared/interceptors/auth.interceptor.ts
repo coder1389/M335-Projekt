@@ -23,7 +23,9 @@ export class AuthenticationInterceptor implements HttpInterceptor {
       mergeMap((token: any) => {
         console.log(token);
         if (token) {
-          request = request.clone({ setHeaders: { Authorization: `Bearer ${token}` } });
+          const temp = request.clone();
+          temp.headers.append('Authorization', `Bearer ${token}`);
+          request = temp;
         }
 
         return next.handle(request);

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UtilService } from './util.service';
+import * as firebase from 'firebase';
 
 
 @Injectable({
@@ -11,8 +12,13 @@ export class AuthService {
   constructor(private $afAuth: AngularFireAuth, private $utilService: UtilService) { }
 
   public async login(mail: string, password: string) {
-    await this.$afAuth.auth.signInWithEmailAndPassword(mail, password)
-    .then(x => this.$utilService.Credentials = x)
-    .catch(x => { throw x });
+    this.$afAuth.auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(async () => {
+      await this.$afAuth.auth.signInWithEmailAndPassword(mail, password)
+          .then(x => this.$utilService.Credentials = x)
+          .catch(x => { throw x; });
+
+      sessionStorage.setItem('mail', mail);
+      sessionStorage.setItem('password', password);
+    });
   }
 }

@@ -18,8 +18,8 @@
             <ion-icon name="ios-camera"></ion-icon>
         </ion-fab-button>
     </ion-row>
-    <ion-row *ngIf="!item.Image == ''">
-        <ion-img [src]="'data:image/jpeg:base64,' + image"></ion-img>
+    <ion-row>
+        <ion-img [src]="image"></ion-img>
     </ion-row>
 </ion-content>
 <ion-footer>

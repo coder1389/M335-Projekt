@@ -9,18 +9,14 @@
     <ion-row>
       <ion-item>
         Mail:
-        {{user.email}}
+        {{user?.email}}
       </ion-item>
     </ion-row>
     <ion-row>
         <ion-item>
           Name:
-          {{user.displayName}}
+          {{user?.displayName}}
         </ion-item>
       </ion-row>
   </ion-grid>
-</ion-content>
-
-<ion-content>
-  <pre>{{user | json}}</pre>
 </ion-content>

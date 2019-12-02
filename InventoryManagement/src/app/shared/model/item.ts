@@ -1,4 +1,3 @@
-
 export class Item {
   Id: string;
   Name: string = '';

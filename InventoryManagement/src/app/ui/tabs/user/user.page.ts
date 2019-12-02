@@ -14,7 +14,6 @@ export class UserPage implements OnInit {
   constructor(private $userService: UserService, private $authService: AuthService) { }
 
   async ngOnInit() {
-    await this.$authService.login('danijelmalinovic2@gmail.com', '10Danijel');
     this.user = await this.$userService.getUser();
   }
 }
