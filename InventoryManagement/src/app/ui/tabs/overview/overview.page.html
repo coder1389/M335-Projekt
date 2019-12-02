@@ -6,11 +6,11 @@
 
 <ion-content *ngIf="items.length > 0">
     <ion-list padding *ngFor="let item of items">
-        <ion-item class="item">
+        <ion-item class="item" (click)="openCreateEditPage(item.Id)">
             <div class="value">
                 {{item.Name}} | {{item.Count}}
             </div>
-            <div class="action">
+            <div class="action" (click)="$event.stopPropagation()">
                 <ion-icon name="trash" class="icon" (click)="delete(item)"></ion-icon>
             </div>
         </ion-item>
@@ -25,5 +25,5 @@
     </ion-grid>
 </ion-content>
 <ion-footer>
-    <ion-icon name="add" class="icon" [routerLink]="'../../create-edit'"></ion-icon>
+    <ion-button fill="clear" size="small" (click)="openCreateEditPage(0)">Hinzufügen</ion-button>
 </ion-footer>

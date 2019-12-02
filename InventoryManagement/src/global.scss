@@ -28,6 +28,15 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('./assets/font/HelveticaNeueLt.ttf');
+}
+
+* {
+    font-family: 'HelveticaNeue', Arial, sans-serif;
+}
 ion-input {
     border-bottom: 1px solid var(--ion-color-primary);
 }

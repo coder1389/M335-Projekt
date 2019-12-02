@@ -1,37 +1,72 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { ItemService } from 'src/app/core/item.service';
-import { Item } from 'src/app/shared/model/item';
-import { AlertService } from 'src/app/core/alert.service';
+import {Component, OnDestroy, OnInit, Sanitizer, SecurityContext} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
+import {ItemService} from 'src/app/core/item.service';
+import {Item} from 'src/app/shared/model/item';
+import {AlertService} from 'src/app/core/alert.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-create-edit',
   templateUrl: './create-edit.page.html',
   styleUrls: ['./create-edit.page.scss'],
 })
-export class CreateEditPage implements OnInit {
+export class CreateEditPage implements OnInit, OnDestroy {
 
   item: Item = new Item();
 
+  image: string;
+
+  private routeSubscription: Subscription;
+  private itemSubscription: Subscription;
+
   private readonly cameraConfiguration: CameraOptions = {
         quality: 35,
-        destinationType: this.$camera.DestinationType.DATA_URL,
+        destinationType: this.$camera.DestinationType.FILE_URI,
         encodingType: this.$camera.EncodingType.JPEG,
-        mediaType: this.$camera.MediaType.PICTURE
+        mediaType: this.$camera.MediaType.PICTURE,
+        allowEdit: true,
+        saveToPhotoAlbum: true
   };
 
-  constructor(private $camera: Camera, private $itemService: ItemService, private $router: Router, private $alertService: AlertService) { }
+  constructor(
+              private $camera: Camera,
+              private $itemService: ItemService,
+              private $router: Router,
+              private $alertService: AlertService,
+              private $sanitizer: Sanitizer,
+              private $route: ActivatedRoute
 
-  ngOnInit() { }
+  ) { }
 
-  async makeFoto() {
-    try {
-      await this.$camera.getPicture(this.cameraConfiguration).then((imageData) => {
-        this.item.Image = 'data:image/jpeg:base64,' + imageData;
+  async ngOnInit() {
+      let id = '';
+      this.routeSubscription = this.$route.params.subscribe(async params => {
+          id = params['id'];
       });
-    } catch {
-      this.$alertService.alert('Camera not available: Dev version on Web!');
+
+      if (id !== '0') {
+          this.itemSubscription = this.$itemService.get(id).subscribe(x => {
+              this.item = x;
+              this.item.Id = id;
+          });
+          console.log(this.item);
+      }
+  }
+
+  ngOnDestroy(): void {
+      this.routeSubscription.unsubscribe();
+      this.itemSubscription.unsubscribe();
+  }
+
+    async makeFoto() {
+    try {
+      this.$camera.getPicture(this.cameraConfiguration).then((imageData) => {
+        this.item.Image = imageData;
+        this.$alertService.alert(imageData);
+      });
+    } catch (e) {
+      this.$alertService.alert(e.message);
     }
   }
 

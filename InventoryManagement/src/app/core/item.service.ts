@@ -1,4 +1,4 @@
-import { Injectable, Sanitizer } from '@angular/core';
+import { Injectable, Sanitizer, SecurityContext } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Item } from '../shared/model/item';
 
@@ -11,29 +11,20 @@ import { Item } from '../shared/model/item';
 export class ItemService {
   constructor(private $db: AngularFirestore, private $sanitize: Sanitizer) { }
 
-  get Items() {
-    const items: Item[] = [];
-
-    this.$db.collection<Item>('items').snapshotChanges().subscribe(serverItems => {
-      serverItems.forEach(a => {
-        const item: any = a.payload.doc.data();
-        item.Id = a.payload.doc.id;
-        items.push(item);
-
-        if (item.Image !== '') {
-          item.Image = this.$sanitize.sanitize(null, item.Image);
-        }
-      });
-    });
-    return items;
+  getItems() {
+    return this.$db.collection<Item>('items').snapshotChanges();
   }
 
   add(item: Item) {
-    this.$db.collection('items').add({
-      Name: item.Name,
-      Count: item.Count,
-      Image: item.Image
-    });
+    if (item.Id !== '' && item.Id !== undefined) {
+      this.$db.doc(`items/${item.Id}`).update(item);
+    } else {
+      this.$db.collection('items').add({
+        Name: item.Name,
+        Count: item.Count,
+        Image: item.Image
+      });
+    }
   }
 
   update(item: Item) {
@@ -42,5 +33,9 @@ export class ItemService {
 
   delete(item: Item) {
     this.$db.doc(`items/${item.Id}`).delete();
+  }
+
+   get(id: string) {
+    return this.$db.doc<Item>(`items/${id}`).valueChanges();
   }
 }
