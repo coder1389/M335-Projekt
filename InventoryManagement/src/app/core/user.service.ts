@@ -12,16 +12,11 @@ export class UserService {
 
   constructor(private $fbAuth: AngularFireAuth, private $authService: AuthService) {}
 
-  async getUser() {
-    this.user = await firebase.auth().currentUser ? firebase.auth().currentUser.providerData[0] : null;
-    if (!this.user) {
-      this.user = await this.$authService.login(sessionStorage.getItem('mail'), sessionStorage.getItem('password'));
-    }
-
-    return this.user;
+  get User() {
+    return this.$fbAuth.user;
   }
 
-  async updateUser(user: any) {
-    this.$fbAuth.auth.updateCurrentUser(user);
+  async updateUser(user: firebase.User) {
+    await this.$fbAuth.auth.updateCurrentUser(user);
   }
 }

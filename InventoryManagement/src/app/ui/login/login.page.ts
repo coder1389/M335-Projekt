@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
   tryLogin() {
     try {
       this.$authService.login(this.mail, this.password);
-      this.$router.navigateByUrl('tabs')
+      this.$router.navigateByUrl('tabs');
     } catch {
       alert('Login fehlgeschlagen');
     }

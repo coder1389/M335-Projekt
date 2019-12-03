@@ -4,19 +4,22 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="user">
   <ion-grid>
-    <ion-row>
-      <ion-item>
-        Mail:
-        {{user?.email}}
-      </ion-item>
+    <ion-row justify-content-center>
+      <div class="image-wrapper" (click)="uploadPhoto()">
+        <ion-img *ngIf="user?.photoURL" [src]="user.photoURL"></ion-img>
+      </div>
     </ion-row>
-    <ion-row>
-        <ion-item>
-          Name:
-          {{user?.displayName}}
-        </ion-item>
-      </ion-row>
+    <ion-row class="custom-row" justify-content-center>
+      <ion-label>
+        Mail
+      </ion-label>
+      <ion-input [(ngModel)]="user.email"></ion-input>
+    </ion-row>
+    <ion-row class="custom-row" justify-content-center>
+      <ion-button fill="clear" (click)="updateUser()">Speichern</ion-button>
+    </ion-row>
   </ion-grid>
 </ion-content>
+<ion-button fill="clear" color="danger">Abmelden</ion-button>

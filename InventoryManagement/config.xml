@@ -3,13 +3,13 @@
     <name>InventoryManager</name>
     <description>Eine App für das Managen von Inventar in einem Unternehmen.</description>
     <author email="danijelmalinovic2@gmail.com" href="https://github.com/coder1389.com/">Danijel Malinovic</author>
-    <content src="index.html"/>
-    <access origin="*"/>
-    <allow-intent href="http://*/*"/>
-    <allow-intent href="https://*/*"/>
-    <allow-intent href="tel:*"/>
-    <allow-intent href="sms:*"/>
-    <allow-intent href="mailto:*"/>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="19" />
@@ -48,17 +48,17 @@
         <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
             <string>Sie können Fotos machen welche sie Hochladen können.</string>
         </config-file>
-        <allow-intent href="itms:*"/>
-        <allow-intent href="itms-apps:*"/>
-        <icon height="57" src="resources/icon.png" width="57"/>
-        <icon height="29" src="resources/icon-small.png" width="29"/>
-        <icon height="20" src="resources/icon-20.png" width="20"/>
-        <icon height="29" src="resources/icon-29.png" width="29"/>
-        <icon height="40" src="resources/icon-40.png" width="40"/>
-        <icon height="50" src="resources/icon-50.png" width="50"/>
-        <icon height="60" src="resources/icon-60.png" width="60"/>
-        <icon height="72" src="resources/icon-72.png" width="72"/>
-        <icon height="76" src="resources/icon-76.png" width="76"/>
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <icon height="57" src="resources/icon.png" width="57" />
+        <icon height="29" src="resources/icon-small.png" width="29" />
+        <icon height="20" src="resources/icon-20.png" width="20" />
+        <icon height="29" src="resources/icon-29.png" width="29" />
+        <icon height="40" src="resources/icon-40.png" width="40" />
+        <icon height="50" src="resources/icon-50.png" width="50" />
+        <icon height="60" src="resources/icon-60.png" width="60" />
+        <icon height="72" src="resources/icon-72.png" width="72" />
+        <icon height="76" src="resources/icon-76.png" width="76" />
     </platform>
     <plugin name="cordova-plugin-whitelist" spec="1.3.3" />
     <plugin name="cordova-plugin-statusbar" spec="2.4.2" />
@@ -66,5 +66,5 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^4.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
-    <plugin name="cordova-plugin-camera" spec="^5.17.1"/>
+    <plugin name="cordova-plugin-camera" spec="^5.17.1" />
 </widget>

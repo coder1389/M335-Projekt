@@ -1,0 +1,16 @@
+ion-grid {
+  padding: 20px;
+}
+
+.custom-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-wrapper {
+  background: lightgray;
+  border-radius: 60px;
+  height: 80px;
+  margin-top: 20px;
+  width: 80px;
+}
