@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, Sanitizer, SecurityContext} from '@angular/core';
+import {Component, OnDestroy, OnInit, Sanitizer} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {ItemService} from 'src/app/core/item.service';
@@ -21,11 +21,11 @@ export class CreateEditPage implements OnInit, OnDestroy {
   private itemSubscription: Subscription;
 
   private readonly cameraConfiguration: CameraOptions = {
-        quality: 100,
-        sourceType: this.$camera.PictureSourceType.CAMERA,
-        destinationType: this.$camera.DestinationType.DATA_URL,
-        encodingType: this.$camera.EncodingType.JPEG,
-        mediaType: this.$camera.MediaType.PICTURE
+      quality: 20,
+      sourceType: this.$camera.PictureSourceType.CAMERA,
+      destinationType: this.$camera.DestinationType.DATA_URL,
+      encodingType: this.$camera.EncodingType.JPEG,
+      mediaType: this.$camera.MediaType.PICTURE
   };
 
   constructor(
