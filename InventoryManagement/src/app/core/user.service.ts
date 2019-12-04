@@ -1,22 +1,26 @@
-import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import * as firebase from 'firebase';
+import {Injectable} from '@angular/core';
+import {AngularFireAuth} from '@angular/fire/auth';
 import {AuthService} from './auth.service';
+import {User} from '../shared/model/user';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class UserService {
 
-  private user: any;
+    private user: any;
 
-  constructor(private $fbAuth: AngularFireAuth, private $authService: AuthService) {}
+    constructor(private $fbAuth: AngularFireAuth, private $authService: AuthService) {
+    }
 
-  get User() {
-    return this.$fbAuth.user;
-  }
+    getUser() {
+        return this.$fbAuth.user;
+    }
 
-  async updateUser(user: firebase.User) {
-    await this.$fbAuth.auth.updateCurrentUser(user);
-  }
+    /*async updateUser(user: fireUser) {
+        await this.$fbAuth.auth.updateCurrentUser({
+          photoURL: user.photoURL,
+          email: user.email
+        }).then(x => x);
+    }*/
 }

@@ -8,9 +8,20 @@ ion-grid {
 }
 
 .image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background: lightgray;
-  border-radius: 60px;
-  height: 80px;
+  border-radius: 120px;
+  height: 150px;
   margin-top: 20px;
-  width: 80px;
+  width: 150px;
+  overflow: hidden;
+
+  ion-img {
+    height: auto;
+    width: 130%;
+    transform: rotate(90deg);
+  }
 }

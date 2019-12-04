@@ -12,13 +12,11 @@ export class AuthService {
   constructor(private $afAuth: AngularFireAuth, private $utilService: UtilService) { }
 
   public async login(mail: string, password: string) {
-    this.$afAuth.auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(async () => {
       await this.$afAuth.auth.signInWithEmailAndPassword(mail, password)
           .then(x => this.$utilService.Credentials = x)
           .catch(x => { throw x; });
 
       sessionStorage.setItem('mail', mail);
       sessionStorage.setItem('password', password);
-    });
   }
 }

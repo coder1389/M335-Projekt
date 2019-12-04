@@ -35,8 +35,7 @@ export class CreateEditPage implements OnInit, OnDestroy {
         private $alertService: AlertService,
         private $sanitizer: Sanitizer,
         private $route: ActivatedRoute
-    ) {
-    }
+    ) { }
 
     /**
      * Happens when the page is fully initialized
@@ -52,7 +51,6 @@ export class CreateEditPage implements OnInit, OnDestroy {
                 this.item = x;
                 this.item.Id = id;
             });
-            console.log(this.item);
         }
     }
 
@@ -67,6 +65,9 @@ export class CreateEditPage implements OnInit, OnDestroy {
         }
     }
 
+    /**
+     * Takes a picture with the provided camera
+     */
     async takePicture() {
         this.$camera.getPicture(this.cameraConfiguration).then((data: string) => {
             this.item.Image = 'data:image/jpeg;base64,' + data;
@@ -75,13 +76,20 @@ export class CreateEditPage implements OnInit, OnDestroy {
         });
     }
 
+    deletePicture() {
+        this.item.Image = '';
+    }
 
     /**
      * Saves the data to the database
      */
     save() {
-        this.$itemService.add(this.item);
-        this.ngOnDestroy();
-        this.$router.navigate(['tabs/overview']);
+        if (this.item.Name === '') {
+            this.$alertService.alert('Name darf nicht leer sein!');
+        } else {
+            this.$itemService.add(this.item);
+            this.ngOnDestroy();
+            this.$router.navigate(['tabs/overview']);
+        }
     }
 }
