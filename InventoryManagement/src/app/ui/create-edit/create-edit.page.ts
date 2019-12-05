@@ -5,6 +5,7 @@ import {ItemService} from 'src/app/core/item.service';
 import {Item} from 'src/app/shared/model/item';
 import {AlertService} from 'src/app/core/alert.service';
 import {Subscription} from 'rxjs';
+import {ErrorMessage} from '../../shared/error-message';
 
 @Component({
     selector: 'app-create-edit',
@@ -76,6 +77,9 @@ export class CreateEditPage implements OnInit, OnDestroy {
         });
     }
 
+    /**
+     * Set image to an empty base64 string
+     */
     deletePicture() {
         this.item.Image = '';
     }
@@ -85,7 +89,7 @@ export class CreateEditPage implements OnInit, OnDestroy {
      */
     save() {
         if (this.item.Name === '') {
-            this.$alertService.alert('Name darf nicht leer sein!');
+            this.$alertService.alert(ErrorMessage.NoName);
         } else {
             this.$itemService.add(this.item);
             this.ngOnDestroy();

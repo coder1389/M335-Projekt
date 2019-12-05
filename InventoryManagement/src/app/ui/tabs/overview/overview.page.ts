@@ -29,17 +29,17 @@ export class OverviewPage implements OnInit {
     this.loadData();
   }
 
-  async delete(item: Item) {
-    await this.$alertService.confirm('Wollen sie wirklich diesen Datensatz löschen?', () => {
-      this.$itemService.delete(item);
-      this.loadData();
-    });
-  }
-
+  /**
+   * Routes to the Create/Edit page with the specific id
+   * @param id
+   */
   openCreateEditPage(id: number) {
     this.$router.navigate([`/../create-edit/${id}`]);
   }
 
+  /**
+   * Loads all data after initilization
+   */
   private loadData() {
     this.items = [];
 
@@ -56,4 +56,16 @@ export class OverviewPage implements OnInit {
       });
     });
   }
+
+  /**
+   * Deleted an element with specific id
+   * @param item
+   */
+  async delete(item: Item) {
+    await this.$alertService.confirm('Wollen sie wirklich diesen Datensatz löschen?', () => {
+      this.$itemService.delete(item);
+      this.loadData();
+    });
+  }
+
 }

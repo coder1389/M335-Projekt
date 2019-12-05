@@ -13,6 +13,9 @@ export class UserService {
     constructor(private $fbAuth: AngularFireAuth, private $authService: AuthService) {
     }
 
+    /**
+     * Returns the currently authenticated user
+     */
     getUser() {
         return this.$fbAuth.user;
     }

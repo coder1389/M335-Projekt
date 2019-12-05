@@ -8,6 +8,11 @@ export class AlertService {
 
   constructor(private $alertController: AlertController) { }
 
+  /**
+   * Creates confirm message for iOS or Android.
+   * @param request
+   * @param callback
+   */
   public async confirm(request: string, callback: () => void) {
     const alert = await this.$alertController.create({
       animated: true,
@@ -31,6 +36,10 @@ export class AlertService {
     return alert.present();
   }
 
+  /**
+   * Creates a normal user notification.
+   * @param customMessage
+   */
   public async alert(customMessage: string) {
     const alert = await this.$alertController.create({
       animated: true,

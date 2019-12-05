@@ -43,6 +43,9 @@ export class UserPage implements OnInit {
         });
     }
 
+    /**
+     * Take a picture and upload it to firebase.
+     */
     async uploadPhoto() {
         this.$camera.getPicture(this.cameraConfiguration).then(async (data: string) => {
             const image = data;
@@ -54,7 +57,11 @@ export class UserPage implements OnInit {
         });
     }
 
-    dataURItoBlob(dataURI) {
+    /**
+     * Converts the image base64 string to s
+     * @param dataURI
+     */
+    private dataURItoBlob(dataURI) {
         const byteString = window.atob(dataURI);
         const arrayBuffer = new ArrayBuffer(byteString.length);
         const int8Array = new Uint8Array(arrayBuffer);
@@ -65,6 +72,9 @@ export class UserPage implements OnInit {
         return blob;
     }
 
+    /**
+     * Updates user generally
+     */
     async updateUser() {
         this.firebaseUser.updateEmail(this.user.email).then(x => {
             this.$alertService.alert('Sie müssen sich wieder anmelden!');

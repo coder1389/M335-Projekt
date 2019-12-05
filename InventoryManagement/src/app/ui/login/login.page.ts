@@ -18,6 +18,9 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Loges the user in or displays an errormessage
+   */
   async tryLogin() {
     try {
       this.$authService.login(this.mail, this.password).then(x => {
