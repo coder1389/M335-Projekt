@@ -15,7 +15,7 @@ Um diese App lokal zu entwickeln bzw. zu starten müssen folgende Schritte ausge
 - npm install (Alle Dependencies installieren)
 - ionic serve (ruft den Normalen ng (Angular) serve Befehl)
 
-Wenn sie die App über die Ionic DebApp aufrufen wollen brauchen sie folgende Schritte:
+Wenn sie die App über die Ionic DebApp aufrufen wollen müssen sie folgende Schritte ausführen:
 - npm install
 - ionic cordova prepare
 - ionic serve --devapp
