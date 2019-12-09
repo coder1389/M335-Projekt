@@ -3,7 +3,7 @@ Eine Personenverwaltungsapp welche ich als meine Arbeit im Ük programmiert habe
 
 # Lokale Entwicklungsumgebung
 ### Globale Dependencies
-Damit sie überhaupt die App benutzten wollen, brauchen sie folgende npm Packages global zu installieren:
+Damit sie überhaupt die App benutzten können, brauchen sie folgende npm Packages global zu installieren:
 - Ionic
 - Cordova
 
