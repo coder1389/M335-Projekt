@@ -7,6 +7,7 @@ import {User} from '../../../shared/model/user';
 import {AlertService} from '../../../core/alert.service';
 import {Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
+import { UtilService } from 'src/app/core/util.service';
 
 @Component({
     selector: 'app-user',
@@ -28,7 +29,7 @@ export class UserPage implements OnInit {
 
     constructor(
         private $userService: UserService,
-        private $authService: AuthService,
+        private $utilService: UtilService,
         private $camera: Camera,
         private $router: Router,
         private $alertService: AlertService,
@@ -48,28 +49,14 @@ export class UserPage implements OnInit {
      */
     async uploadPhoto() {
         this.$camera.getPicture(this.cameraConfiguration).then(async (data: string) => {
-            const image = data;
+            const imageData = data;
+            const image = this.$utilService.convertBase64ToBlob(imageData);
 
             const ref = this.$storage.ref(`${this.firebaseUser.uid}_logo.jpg`);
-            const task = ref.put(this.dataURItoBlob(image));
+            const task = ref.put(image);
 
             this.firebaseUser.updateProfile({photoURL: `${this.firebaseUser.uid}_logo.jpg`}).catch(x => this.$alertService.alert(x));
         });
-    }
-
-    /**
-     * Converts the image base64 string to s
-     * @param dataURI
-     */
-    private dataURItoBlob(dataURI) {
-        const byteString = window.atob(dataURI);
-        const arrayBuffer = new ArrayBuffer(byteString.length);
-        const int8Array = new Uint8Array(arrayBuffer);
-        for (let i = 0; i < byteString.length; i++) {
-            int8Array[i] = byteString.charCodeAt(i);
-        }
-        const blob = new Blob([int8Array], { type: 'image/jpg' });
-        return blob;
     }
 
     /**

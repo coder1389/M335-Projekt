@@ -3,25 +3,29 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { UtilService } from './util.service';
 import * as firebase from 'firebase';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  constructor(
+    private $afAuth: AngularFireAuth,
+    private $utilService: UtilService
+  ) {}
 
-  constructor(private $afAuth: AngularFireAuth, private $utilService: UtilService) { }
-
-    /**
-     * Authenticates the user to firebase
-     * @param mail
-     * @param password
-     */
+  /**
+   * Authenticates the user to firebase
+   * @param mail Mail
+   * @param password Password
+   */
   public async login(mail: string, password: string) {
-      await this.$afAuth.auth.signInWithEmailAndPassword(mail, password)
-          .then(x => this.$utilService.Credentials = x)
-          .catch(x => { throw x; });
+    await this.$afAuth.auth
+      .signInWithEmailAndPassword(mail, password)
+      .then(x => (this.$utilService.Credentials = x))
+      .catch(x => {
+        throw x;
+      });
 
-      sessionStorage.setItem('mail', mail);
-      sessionStorage.setItem('password', password);
+    sessionStorage.setItem('mail', mail);
+    sessionStorage.setItem('password', password);
   }
 }
