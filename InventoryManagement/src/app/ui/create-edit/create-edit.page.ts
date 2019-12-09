@@ -90,6 +90,8 @@ export class CreateEditPage implements OnInit, OnDestroy {
     save() {
         if (this.item.Name === '') {
             this.$alertService.alert(ErrorMessage.NoName);
+        } else if(this.item.Count < 0) {
+            this.$alertService.alert(ErrorMessage.CountLessThanZero);
         } else {
             this.$itemService.add(this.item);
             this.ngOnDestroy();
