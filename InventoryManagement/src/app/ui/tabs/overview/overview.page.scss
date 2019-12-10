@@ -3,6 +3,10 @@
     .value {
         flex: 1;
     }
+
+    .fixed-width-value {
+        flex: 0 0 50px;
+    }
 }
 
 .icon {

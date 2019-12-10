@@ -11,7 +11,7 @@
     </ion-row>
     <ion-row>
         <ion-label>Anzahl</ion-label>
-        <ion-input type="number" [(ngModel)]="item.Count"></ion-input>
+        <ion-input type="number" [(ngModel)]="item.Count" pattern="\\d*"></ion-input>
     </ion-row>
     <ion-row>
         <ion-img *ngIf="item.Image !== ''" [src]="item.Image"></ion-img>
